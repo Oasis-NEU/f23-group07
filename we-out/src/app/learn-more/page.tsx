@@ -1,7 +1,7 @@
 import marino from '../../assets/marino.jpg'
 import Link from 'next/link'
 
-export default function Welcome() {
+export default function LearnMore() {
 
   return (
 
@@ -12,7 +12,7 @@ export default function Welcome() {
         }}>
       <h1
         className="absolute top-1/4 text-center text-6xl text-red-with-border">
-        Welcome to NUgym!
+        About NUgym
       </h1>
 
       <h1
