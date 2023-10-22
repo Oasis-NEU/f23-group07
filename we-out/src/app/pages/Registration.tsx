@@ -3,9 +3,8 @@ import { Button, Form, InputGroup } from 'react-bootstrap';
 import Link from 'next/link'
 import './Registration.css'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 import backdrop from "./backdrop.jpg";
-import LogoCard from "../../Home-Page/LogoCard";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 
 function RegistrationScreen() {

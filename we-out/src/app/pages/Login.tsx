@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, Form, InputGroup} from "react-bootstrap";
 import Link from 'next/link'
-import signInWithEmailAndPassword from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
 import backdrop from "./backdrop.jpg";
-import LogoCard from "../../Home-Page/LogoCard";
+
 import { db } from "../firebase";
 
 interface User {
