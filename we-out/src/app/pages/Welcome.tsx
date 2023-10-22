@@ -10,7 +10,7 @@ export default function Welcome() {
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.9)), url(${marino.src})`
         }}>
       <h1
-        className="absolute top-1/4 text-center text-5xl text-white">
+        className="absolute top-1/4 text-center text-6xl text-red-with-border">
         Welcome to NUgym!
       </h1>
 
@@ -24,13 +24,13 @@ export default function Welcome() {
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
-            className="font-bold block w-full rounded border border-white bg-green-500 px-12 py-3 text-sm text-white hover:bg-green-800 hover:text-gray-500 focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
+            className="font-bold block w-full rounded border border-white bg-red-500 px-12 py-3 text-sm text-white hover:bg-red-800 hover:text-gray-500 focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
             href="login">
             Login
           </a>
 
           <a
-            className="font-bold block w-full rounded border border-white bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-cyan-800 hover:text-gray-500 focus:outline-none focus:ring sm:w-auto no-underline"
+            className="font-bold block w-full rounded border border-white bg-red-500 px-12 py-3 text-sm text-white hover:bg-red-800 hover:text-gray-500 focus:outline-none focus:ring sm:w-auto no-underline"
             href="#section2">
             Learn More
           </a>
