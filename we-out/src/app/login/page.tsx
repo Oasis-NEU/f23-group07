@@ -1,10 +1,12 @@
+"use client";
+
 import { useState } from "react";
 import { Button, Form, InputGroup} from "react-bootstrap";
 import Link from 'next/link'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
-import backdrop from "./backdrop.jpg";
+import login from "../../assets/login.jpg";
 
 import { db } from "../firebase";
 
@@ -58,9 +60,6 @@ function LoginScreen() {
     >
       <div className="Container">
         <div className="pt-28 px-8">
-        <div className="relative bottom-0 items-center text-slate-900">
-          <LogoCard/>
-        </div>
           <header className="Header font-sans font-bold">Log in</header>
           <hr className="pt-0" />
           <Form onSubmit={handleLogin}>
@@ -107,7 +106,7 @@ function LoginScreen() {
         </div>
       </div>
       <div className="bg-info z-0">
-        <img src={backdrop} className="object-fill h-full" width="1178px" />
+        <img src={login.src} className="object-fill h-full" width="1178px" />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import Welcome from 'src/app/pages/Welcome';
+import Welcome from "./welcome/page";
 
 export default function Home() {
   return <Welcome />;
