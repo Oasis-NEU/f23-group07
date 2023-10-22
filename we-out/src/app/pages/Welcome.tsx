@@ -1,28 +1,46 @@
-
-
-
+import marino from '../../assets/marino.jpg'
 
 export default function Welcome() {
-    return (
-      <div>
-        <h1>Welcome to We Out!</h1>
-        <p>Let's get started!</p>
+
+  return (
+
+    <div 
+        className="relative flex items-center justify-center h-screen bg-cover bg-no-repeat bg-center" 
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.9)), url(${marino.src})`
+        }}
+    >
+      <h1
+        className="absolute top-1/4 text-center text-5xl text-white"
+      >
+        Welcome to NUgym!
+      </h1>
+
+      <h1
+        className="absolute top-1/3 text-center text-3xl text-white"
+      >
+        Let's Get Started
+      </h1>
+      
+      <div className="z-10">
+
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a
-                className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
-                href="login"
-              >
-                Login
-              </a>
+          <a
+            className="font-bold block w-full rounded border border-white bg-green-500 px-12 py-3 text-sm text-white hover:bg-green-800 hover:text-gray-500 focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
+            href="login"
+          >
+            Login
+          </a>
 
-              <a
-                className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 focus:outline-none focus:ring sm:w-auto no-underline"
-                href="#section2"
-              >
-                Learn More
-              </a>
-      </div>
+          <a
+            className="font-bold block w-full rounded border border-white bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-cyan-800 hover:text-gray-500 focus:outline-none focus:ring sm:w-auto no-underline"
+            href="#section2"
+          >
+            Learn More
+          </a>
         </div>
-    );
-}
+      </div>
+    </div>
 
+  );
+}
