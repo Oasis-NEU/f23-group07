@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link'
 import './Registration.css'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -9,7 +9,6 @@ import LogoCard from "../../Home-Page/LogoCard";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 
 function RegistrationScreen() {
-  const nav = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [walletID, setWalletID] = useState<string>("");
   const [policyNum, setPolicyNum] = useState<string>("");
@@ -186,9 +185,7 @@ function RegistrationScreen() {
           </Form>
           <div className="SwitchLoginCreateGroup">
             <p>Already have an account?</p>
-            <Link to="/login" className="font-sans font-bold">
-              Sign in
-            </Link>
+            <Link className="font-sans font-bold" href="/login">Login</Link>
           </div>
         </div>
       </div>
