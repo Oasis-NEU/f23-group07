@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import "./Registration.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { Button, Form, InputGroup} from "react-bootstrap";
+import Link from 'next/link'
+import signInWithEmailAndPassword from "firebase/auth";
+import { auth } from "../firebase";
 import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 
 interface User {
   username: string;
@@ -15,7 +14,6 @@ interface User {
 }
 
 function LoginScreen() {
-  const nav = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState(false);
@@ -41,11 +39,6 @@ function LoginScreen() {
           }
         };
         getIsClient();
-        if (isClient) {
-          nav(`/user-logged-in/${id}`);
-        } else {
-          nav(`/provider-logged-in/${id}`);
-        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -94,24 +87,20 @@ function LoginScreen() {
                 variant="outline-secondary"
                 id="addon"
                 onClick={togglePassword}
-                className="ShowButton"
-              >
-                <i
-                  className={passwordShown ? "fas fa-eye-slash" : "fas fa-eye"}
-                />
+                className="ShowButton">
+                <i className={passwordShown ? "fas fa-eye-slash" : "fas fa-eye"}/>
               </Button>
             </InputGroup>
             <Button
               className="font-sans font-bold"
               variant="info"
-              type="submit"
-            >
+              type="submit">
               Login
             </Button>
           </Form>
           <div className="SwitchLoginCreateGroup font-sans">
             <p>Don't have an account?</p>
-            <Link to="/registration/" className="font-sans font-bold">
+            <Link href="/registration/" className="font-sans font-bold">
               Register
             </Link>
           </div>
