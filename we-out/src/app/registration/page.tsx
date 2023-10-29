@@ -47,15 +47,10 @@ function RegistrationScreen() {
     const id = user?.uid;
     if (isClient) {
       const userRef = doc(collection(db, "users"), id);
-      setDoc(userRef, {
-      walletID: walletID,
-      policyNum: policyNum,
-    });}
+      setDoc(userRef, {});}
     else {
       const userRef = doc(collection(db, "providers"), id);
-      setDoc(userRef, {
-      walletID: walletID,
-    });}
+      setDoc(userRef, {});}
   };
 
   return (
