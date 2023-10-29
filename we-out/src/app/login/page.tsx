@@ -93,7 +93,9 @@ function LoginScreen() {
             <Button
               className="font-sans font-bold"
               variant="info"
-              type="submit">
+              type="submit"
+              href="/landing-page"
+            >
               Login
             </Button>
           </Form>
