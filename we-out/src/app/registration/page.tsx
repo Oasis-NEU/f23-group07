@@ -3,16 +3,13 @@
 import { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import Link from 'next/link'
-import './Registration.css'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import backdrop from "./backdrop.jpg";
+import login from "../../assets/login.jpg";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 
 function RegistrationScreen() {
   const [email, setEmail] = useState<string>("");
-  const [walletID, setWalletID] = useState<string>("");
-  const [policyNum, setPolicyNum] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmationPassword, setConfirmationPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
@@ -50,15 +47,10 @@ function RegistrationScreen() {
     const id = user?.uid;
     if (isClient) {
       const userRef = doc(collection(db, "users"), id);
-      setDoc(userRef, {
-      walletID: walletID,
-      policyNum: policyNum,
-    });}
+      setDoc(userRef, {});}
     else {
       const userRef = doc(collection(db, "providers"), id);
-      setDoc(userRef, {
-      walletID: walletID,
-    });}
+      setDoc(userRef, {});}
   };
 
   return (
@@ -71,9 +63,6 @@ function RegistrationScreen() {
     >
       <div className="Container">
         <div className="pt-14 px-8">
-          <div className="relative bottom-0 items-center text-slate-900">
-          <LogoCard/>
-        </div>
           <header className="Header font-sans font-bold">Sign Up</header>
           <hr className="pt-0" />
           <Form className="Form" onSubmit={handleRegistration}>
@@ -146,39 +135,6 @@ function RegistrationScreen() {
                 Passwords do not match!
               </Form.Control.Feedback>
             </InputGroup>
-            <InputGroup className="mb-3">
-              <Form.Control
-                required
-                type="text"
-                placeholder="WalletID"
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setWalletID(val);
-                }}
-              />
-            </InputGroup>
-            <InputGroup className="mb-3">
-              <Form.Control
-                required
-                type="text"
-                placeholder="Health Insurance Policy Number"
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setPolicyNum(val);
-                }}
-              />
-            </InputGroup>
-            <InputGroup className="mx-3">
-                <InputGroup.Text id="healthcare-provider-label" className="mx-3">
-                  Are you a healthcare provider?
-                </InputGroup.Text>
-              <Form.Check
-                type="checkbox"
-                id="healthcare-provider-checkbox"
-                label="Yes"
-                onChange={(e) => {setIsClient(!isClient)}}
-              />
-            </InputGroup>
             <Button variant="outline-secondary" type="submit" className='SubmitButton'>
               Sign up
             </Button>
@@ -191,7 +147,7 @@ function RegistrationScreen() {
         </div>
       </div>
       <div className="bg-info z-0">
-        <img src={backdrop} className="object-fill h-full" width="1178px" />
+        <img src={login.src} className="object-fill h-full" width="1178px" />
       </div>
     </div>
   );
