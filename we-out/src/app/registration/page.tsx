@@ -45,12 +45,8 @@ function RegistrationScreen() {
   const handleRegistrationDB = async (user: any) => {
     const db = getFirestore();
     const id = user?.uid;
-    if (isClient) {
-      const userRef = doc(collection(db, "users"), id);
-      setDoc(userRef, {});}
-    else {
-      const userRef = doc(collection(db, "providers"), id);
-      setDoc(userRef, {});}
+    const userRef = doc(collection(db, "users"), id);
+    setDoc(userRef, {});
   };
 
   return (
@@ -135,7 +131,12 @@ function RegistrationScreen() {
                 Passwords do not match!
               </Form.Control.Feedback>
             </InputGroup>
-            <Button variant="outline-secondary" type="submit" className='SubmitButton'>
+            <Button
+              variant="outline-secondary"
+              type="submit"
+              className='SubmitButton'
+              href="/create-profile"
+            >
               Sign up
             </Button>
             {error && <div className="text-danger mt-3">{error}</div>}
