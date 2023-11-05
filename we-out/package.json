@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/firebase": "^3.2.1",
     "@types/react-bootstrap": "^0.32.34",
     "firebase": "^10.5.0",
     "framer-motion": "^10.16.4",
     "next": "^13.5.6",
     "react": "latest",
-    "react-bootstrap": "^2.9.1",
+    "react-bootstrap": "^2.7.1",
     "react-dom": "latest",
     "react-firebase-hooks": "^5.1.1"
   },
