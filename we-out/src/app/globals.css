@@ -67,6 +67,7 @@ body {
   border-radius: 1px; /* Add rounded corners to the text box */
   border-radius: 5px;
   max-width: 610px;
+  color : 'black';
 }
 
 
