@@ -1,9 +1,13 @@
 import marino from '../../assets/marino.jpg'
 import Link from 'next/link'
 
-export default function Dashboard() {
+function Dashboard() {
 
   return (
-    <Dashboard />
+    <div>
+        <p>Dashboard</p>
+    </div>
   );
 }
+
+export default Dashboard;
