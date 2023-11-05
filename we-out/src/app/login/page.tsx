@@ -96,7 +96,7 @@ function LoginScreen() {
               className="font-sans font-bold"
               variant="info"
               type="submit"
-              href="/landing-page"
+              href="/dashboard"
             >
               Login
             </Button>
