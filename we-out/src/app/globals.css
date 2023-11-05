@@ -6,7 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --shadow-color: #ff0000;
+  --shadow-color: #fc0000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,7 +37,7 @@ body {
 }
 
 .text-red-with-border {
-  color: rgb(255, 255, 255); /* Red text color */
+  color: rgb(253, 253, 253); /* Red text color */
 
   text-shadow: -1px -1px 0 var(--shadow-color), 1px -1px 0 var(--shadow-color), -1px 1px 0 var(--shadow-color), 1px 1px 0 var(--shadow-color); /* White border */
 }
@@ -79,5 +79,18 @@ body {
   color : 'black';
 }
 
+.centered-right-align {
+  text-align: right; /* Right-align the entire text container */
+}
 
+.centered-text {
+  display: inline-block; /* Make the text span inline-block to center-align it */
+  text-align: left; /* Center-align the text within the inline-block span */
+  width: 50%; /* Adjust the width as needed */
+}
 
+.right-aligned-text {
+  display: inline-block; /* Make the text span inline-block to right-align it */
+  text-align: right; /* Right-align the text within the inline-block span */
+  width: 50%; /* Adjust the width as needed */
+}
