@@ -33,3 +33,40 @@ body {
   text-shadow: -1px -1px 0 var(--shadow-color), 1px -1px 0 var(--shadow-color), -1px 1px 0 var(--shadow-color), 1px 1px 0 var(--shadow-color); /* White border */
 }
 
+.rounded-box-left {
+  background-color: #ffffff; /* Background color for the rounded box */
+  border-radius: 10px; /* Add rounded corners */
+  padding: 3px; /* Adjust padding as needed */
+  margin: 10px; /* Adjust margin as needed */
+  text-align: center;
+  position: absolute;
+  bottom: 0; /* Position at the bottom of the container */
+  left: 50%; /* Position in the center horizontally */
+  transform: translateX(5%); /* Center the box horizontally */
+  max-height: 60vh;
+}
+
+.rounded-box-right {
+  background-color: #ffffff; /* Background color for the rounded box */
+  border-radius: 10px; /* Add rounded corners */
+  padding: 3px; /* Adjust padding as needed */
+  margin: 10px; /* Adjust margin as needed */
+  text-align: center;
+  position: absolute;
+  bottom: 0; /* Position at the bottom of the container */
+  left: 50%; /* Position in the center horizontally */
+  transform: translateX(-110%); /* Center the box horizontally */
+}
+
+.text-box {
+  /* Add styles for the text box content here */
+  padding: 5px;
+  border: 1px solid #ccc; /* Add a border if desired */
+  background-color: rgb(236, 17, 17); /* Background color for the text box */
+  border-radius: 1px; /* Add rounded corners to the text box */
+  border-radius: 5px;
+  max-width: 500px;
+}
+
+
+

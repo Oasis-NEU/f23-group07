@@ -1,4 +1,4 @@
-import marino from '../../assets/marino.jpg'
+import marino from '../../assets/learnmore.jpeg'
 import Link from 'next/link'
 
 export default function LearnMore() {
@@ -15,28 +15,37 @@ export default function LearnMore() {
         About NUgym
       </h1>
 
-      <h1
-        className="absolute top-1/3 text-center text-3xl text-white"
-      >
-        Let's Get Started
-      </h1>
       
       <div className="z-10">
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link
             className="font-bold block w-full rounded border border-white bg-red-500 px-12 py-3 text-sm text-white hover:bg-red-800 hover:text-gray-500 focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
-            href="/login">
-            Login
-          </Link>
-
-          <Link
-            className="font-bold block w-full rounded border border-white bg-red-500 px-12 py-3 text-sm text-white hover:bg-red-800 hover:text-gray-500 focus:outline-none focus:ring sm:w-auto no-underline"
-            href="/learn-more">
-            Learn More
+            href="/welcome">
+            Home
           </Link>
         </div>
       </div>
+
+      <div className="rounded-box-left">
+        <div className="text-box">
+          <p>Your text goes here. Your text goes here. Your text goes here. Your text goes here. Your text goes here. Your text goes here. 
+          Your text goes here. Your text goes here. Your text goes here. Your text goes here. Your text goes here. 
+          </p>
+        </div>
+      </div>
+
+      <div className="rounded-box-right">
+        <div className="text-box">
+          <p>Cmon man.  Cmon man.  Cmon man.  Cmon man.  Cmon man.  Cmon man.  Cmon man.  Cmon man.  Cmon man.  Cmon man.  
+          Cmon man.  Cmon man.  Cmon man.  Cmon man.  Cmon man.  
+          
+          </p>
+        </div>
+      </div>
+
+
+
     </div>
 
   );
