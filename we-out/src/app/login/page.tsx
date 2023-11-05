@@ -71,6 +71,7 @@ function LoginScreen() {
                   const val = e.target.value;
                   setEmail(val);
                 }}
+                style={{ color: 'black' }}
               />
             </Form.Group>
             <InputGroup className="mb-3">
@@ -81,6 +82,7 @@ function LoginScreen() {
                   const val = e.target.value;
                   setPassword(val);
                 }}
+                style={{ color: 'black' }}
               />
               <Button
                 variant="outline-secondary"
