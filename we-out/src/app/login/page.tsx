@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
-import login from "../../assets/login.jpg";
+import login from "../../assets/login.jpeg";
 
 import { db } from "../firebase";
 
