@@ -6,7 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --shadow-color: #fdb6b6;
+  --shadow-color: #ff0000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,8 +27,17 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.font-style {
+  font-family: "Helvetica", sans-serif; /* Font family */
+  font-size: 16px; /* Font size */
+  font-weight: normal; /* Font weight (e.g., normal, bold) */
+  font-style: normal; /* Font style (e.g., italic, normal) */
+  color: #fff; /* Text color */
+  text-decoration: none; /* Text decoration (e.g., underline, none) */
+}
+
 .text-red-with-border {
-  color: red; /* Red text color */
+  color: rgb(255, 255, 255); /* Red text color */
 
   text-shadow: -1px -1px 0 var(--shadow-color), 1px -1px 0 var(--shadow-color), -1px 1px 0 var(--shadow-color), 1px 1px 0 var(--shadow-color); /* White border */
 }
