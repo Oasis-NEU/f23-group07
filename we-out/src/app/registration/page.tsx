@@ -5,7 +5,7 @@ import { Button, Form, InputGroup } from 'react-bootstrap';
 import Link from 'next/link'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import login from "../../assets/login.jpg";
+import login from "../../assets/login.jpeg";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 
 function RegistrationScreen() {
