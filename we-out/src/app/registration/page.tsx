@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import Link from 'next/link'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, User } from "firebase/auth";
 import { auth } from "../firebase";
 import login from "../../assets/login.jpeg";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
@@ -14,8 +15,7 @@ function RegistrationScreen() {
   const [password, setPassword] = useState<string>("");
   const [confirmationPassword, setConfirmationPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
-  const [confirmationPasswordShown, setConfirmationPasswordShown] =
-    useState<boolean>(false);
+  const [confirmationPasswordShown, setConfirmationPasswordShown] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   const togglePassword = () => {
@@ -26,30 +26,47 @@ function RegistrationScreen() {
     setConfirmationPasswordShown(!confirmationPasswordShown);
   };
 
+  const handleRegistrationDB = async (user: User) => {
+    const db = getFirestore();
+    console.log("Successfully Fetched Database: " + db);
+
+    const id = user.uid;
+    console.log("Successfully Fetched User ID: " + id);
+
+    const userRef = doc(collection(db, "users"), id);
+    console.log("Successfully Created Document Collection");
+
+    setDoc(userRef, {
+      name: name
+    });
+    console.log("Successfully Saved Name");
+  };
+
   const handleRegistration = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
+    console.log("Registration Form Submitted");
     event.preventDefault();
+    
+    const router = useRouter();
+
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log("Successfully Created User");
         handleRegistrationDB(user);
+        router.push({
+          pathname: '/create-profile',
+          query: { user: user.uid }
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log("ERROR CREATING USER WITH EMAIL AND PASSWORD");
         console.log(errorCode);
         console.log(errorMessage);
       });
-  };
-
-  const handleRegistrationDB = async (user: any) => {
-    const db = getFirestore();
-    const id = user?.uid;
-    const userRef = doc(collection(db, "users"), id);
-    setDoc(userRef, {
-      name: this.name
-    });
   };
 
   return (
@@ -65,7 +82,7 @@ function RegistrationScreen() {
           <header className="Header font-sans font-bold">Sign Up</header>
           <hr className="pt-0" />
           <Form className="Form" onSubmit={handleRegistration}>
-          <InputGroup className="mb-3" hasValidation>
+            <InputGroup className="mb-3" hasValidation>
               <Form.Control
                 required
                 type="name"
@@ -74,6 +91,7 @@ function RegistrationScreen() {
                 className= "text-black"
                 isInvalid={name.trim().length === 0}
                 onChange={(e) => {
+                  console.log("Name Being Changed");
                   const val = e.target.value;
                   setName(val);
                 }}
@@ -91,6 +109,7 @@ function RegistrationScreen() {
                 className="text-black"
                 isInvalid={!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && !!email}
                 onChange={(e) => {
+                  console.log("Email Being Changed");
                   const val = e.target.value;
                   setEmail(val);
                 }}
@@ -107,6 +126,7 @@ function RegistrationScreen() {
                 value={password}
                 className="text-black"
                 onChange={(e) => {
+                  console.log("Password Being Changed");
                   const val = e.target.value;
                   setPassword(val);
                 }}
@@ -132,6 +152,7 @@ function RegistrationScreen() {
                   password !== confirmationPassword && !!confirmationPassword
                 }
                 onChange={(e) => {
+                  console.log("Confirmation Password Being Changed");
                   const val = e.target.value;
                   setConfirmationPassword(val);
                 }}
@@ -157,11 +178,15 @@ function RegistrationScreen() {
             <Button
               variant="outline-secondary"
               type="submit"
-              className='SubmitButton'>
+              className='SubmitButton'
+              href="/create-profile"
+            >
               Sign up
             </Button>
             {error && <div className="text-danger mt-3">{error}</div>}
           </Form>
+
+
           <div className="SwitchLoginCreateGroup">
             <p>Already have an account?</p>
             <Link className="font-sans font-bold" href="/login">Login</Link>

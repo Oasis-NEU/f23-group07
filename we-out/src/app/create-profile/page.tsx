@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { setDoc, doc, collection, getFirestore } from "firebase/firestore";
+import { setDoc, getDocs, doc, collection, getFirestore } from "firebase/firestore";
+import { db } from "../firebase";
 import { auth } from "../firebase";
 
 function CreateProfile() {
@@ -11,9 +12,22 @@ function CreateProfile() {
   const [timesAvailable, setTimesAvailable] = useState<{ [key: string]: { start: string, end: string } }>({});
   const [experienceLevel, setExperienceLevel] = useState<string>("");
 
+  const user = auth.currentUser;
+
   const handleCustomization = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: Save to Firestore
+    
+    const db = getFirestore();
+
+    const id = user.uid;
+
+    const userRef = doc(collection(db, "users"), id);
+    setDoc(userRef, {
+      profilePic: profilePic,
+      daysAvailable: daysAvailable,
+      timesAvailable: timesAvailable,
+      experienceLevel: experienceLevel
+    });
   };
 
   return (
@@ -22,10 +36,11 @@ function CreateProfile() {
         <div className="pt-14 px-8">
           <header className="Header font-sans font-bold">Profile Customization</header>
           <Form onSubmit={handleCustomization}>
+            
             {/* Profile Picture Input */}
             <Form.Group>
               <Form.Label>Profile Picture</Form.Label>
-              <Form.Control type="file" onChange={e => setProfilePic(URL.createObjectURL(e.target.files[0]))} />
+              <Form.Control type="file" onChange={e => setProfilePic(URL.createObjectURL((e.target as HTMLInputElement).files[0]))} />
             </Form.Group>
 
             {/* Days Available */}

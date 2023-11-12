@@ -21,6 +21,15 @@ function Card({ userData, onSwipe }) {
             }}
         >
             {/* Your card content using userData */}
+            <div className="profile-card">
+                <img src={userData.profilePic} alt="Profile" className="profile-pic"/>
+                <div className="profile-info">
+                    <h3>Name: {userData.name} </h3>
+                    <h3>Days Available: {userData.daysAvailable.join(', ')}</h3>
+                    <h3>Times Available: {userData.timesAvailable.join(', ')}</h3>
+                    <h3>Experience Level: {userData.experienceLevel}</h3>
+                </div>
+            </div>
         </motion.div>
     );
 }

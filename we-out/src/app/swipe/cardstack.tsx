@@ -1,18 +1,15 @@
 import { useState } from 'react';
-import { useRouter} from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import Card from './card'
+import Card from './card';
+import { User } from 'firebase/auth';
 
 function CardStack({ users }) {
-    const router = useRouter();
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleLike = () => {
         console.log("Like");
 
-        router.push('/match');
-
-        // Work on matchin algorithm later
+        //TODO: Work on matching algorithm later
         /*
 
         // If both liked each other, then match
@@ -43,10 +40,15 @@ function CardStack({ users }) {
     };
 
     return (
-        <AnimatePresence>
-            {currentIndex < users.length && (
-                <Card key={users[currentIndex].id} userData={users[currentIndex]} onSwipe={handleSwipe} />
-            )}
-        </AnimatePresence>
+        <div>
+            Users
+            <AnimatePresence>
+                {currentIndex < users.length && (
+                    <Card key={users[currentIndex].id} userData={users[currentIndex]} onSwipe={handleSwipe} />
+                )}
+            </AnimatePresence>
+        </div>
     );
 }
+
+export default CardStack;
