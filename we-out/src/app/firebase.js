@@ -14,9 +14,9 @@ const firebaseConfig = {
     appId: "1:20348700677:web:158fe12f0f86949d58f46c"
   };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
