@@ -12,5 +12,5 @@ export async function GET(req: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code)
   }
 
-  return NextResponse.redirect(new URL('/account', req.url)) //this should be changed to something else too maybe the logged in landing page instead
+  return NextResponse.redirect(new URL('/account', req.url)) //TODO: change this to a account setup page
 }
