@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     },
   })
 
-  return NextResponse.redirect(requestUrl.origin, {
+  return NextResponse.redirect(`${requestUrl.origin}/auth/callback/newaccount`, {
     status: 301,
   })
 }
