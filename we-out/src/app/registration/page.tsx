@@ -10,13 +10,13 @@ export default function Home() {
         </p>
       </div>
       <div className="col-6 auth-widget text-black">
-    <form action="/auth/sign-up" method="post">
-      <label htmlFor="email">Email</label>
-      <input name="email" />
-      <label htmlFor="password">Password</label>
-      <input type="password" name="password" />
-      <button>Sign Up</button>
-    </form>
+        <form action="/auth/sign-up" method="post">
+          <label htmlFor="email">Email</label>
+          <input name="email" />
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" />
+          <button>Sign Up</button>
+        </form>
       </div>
     </div>
   )

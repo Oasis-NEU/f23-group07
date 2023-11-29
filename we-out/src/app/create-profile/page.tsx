@@ -2,9 +2,6 @@
 
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { setDoc, getDocs, doc, collection, getFirestore } from "firebase/firestore";
-import { db } from "../firebase";
-import { auth } from "../firebase";
 
 function CreateProfile() {
   const [profilePic, setProfilePic] = useState<string>("");
