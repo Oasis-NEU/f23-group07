@@ -1,7 +1,7 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
-import { Database } from '../database.types'
+import { Database } from '../../database.types'
 
 export async function POST(request: Request) {
   const requestUrl = new URL(request.url)
@@ -23,9 +23,21 @@ export async function POST(request: Request) {
   const cookieStore = cookies()
   const supabase = createRouteHandlerClient<Database>({ cookies: () => cookieStore })
 
-  await supabase.from('profiles').insert({
-    id: "ddfe36b3-587c-40c0-9924-5d654a39f3a4",
-    
+  /////////////////////////////////////////////////////////////////
+
+  //TODO: Figure out how to get the current user
+  const { data: { user } } = await supabase.auth.getUser()
+
+  console.log("Fetched User: " + user);
+  //const userId = user.id;
+  const userId = "ddfe36b3-587c-40c0-9924-5d654a39f3a4";
+
+  /////////////////////////////////////////////////////////////////
+
+  console.log("Fetched User ID: " + userId);
+
+
+  await supabase.from('profiles').update({
     profile_picture_url: profilePicture,
 
     monday_available: mondayAvailable,
@@ -37,7 +49,7 @@ export async function POST(request: Request) {
     sunday_available: sundayAvailable,
 
     experience_level: experienceLevel,
-  });
+  }).eq('id', userId);
 
   return NextResponse.redirect(requestUrl.origin, {
     status: 301,

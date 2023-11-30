@@ -1,99 +1,47 @@
-"use client";
+export default function CreateProfile() {
+    return (
+        <form action="/create-profile/api" method="post">
 
-import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+            <label htmlFor="profile-picture">Profile Picture</label>
+            <input type="file" name="profile-picture" />
 
-function CreateProfile() {
-  const [profilePic, setProfilePic] = useState<string>("");
-  const [daysAvailable, setDaysAvailable] = useState<string[]>([]);
-  const [timesAvailable, setTimesAvailable] = useState<{ [key: string]: { start: string, end: string } }>({});
-  const [experienceLevel, setExperienceLevel] = useState<string>("");
 
-  const user = auth.currentUser;
+            <label >Days Available</label>
 
-  const handleCustomization = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    
-    const db = getFirestore();
+            <label htmlFor="monday-available">Monday</label>
+            <input type="checkbox" name="monday-available" />
 
-    const id = user.uid;
+            <label htmlFor="tuesday-available">Tuesday</label>
+            <input type="checkbox" name="tuesday-available" />
 
-    const userRef = doc(collection(db, "users"), id);
-    setDoc(userRef, {
-      profilePic: profilePic,
-      daysAvailable: daysAvailable,
-      timesAvailable: timesAvailable,
-      experienceLevel: experienceLevel
-    });
-  };
+            <label htmlFor="wednesday-available">Wednesday</label>
+            <input type="checkbox" name="wednesday-available" />
 
-  return (
-    <div style={{ display: "flex", justifyContent: "space-between", height: "92vh" }}>
-      <div className="Container">
-        <div className="pt-14 px-8">
-          <header className="Header font-sans font-bold">Profile Customization</header>
-          <Form onSubmit={handleCustomization}>
+            <label htmlFor="thursday-available">Thursday</label>
+            <input type="checkbox" name="thursday-available" />
+
+            <label htmlFor="friday-available">Friday</label>
+            <input type="checkbox" name="friday-available" />
+
+            <label htmlFor="saturday-available">Saturday</label>
+            <input type="checkbox" name="saturday-available" />
+
+            <label htmlFor="sunday-available">Sunday</label>
+            <input type="checkbox" name="sunday-available" />
+
+
+            <label htmlFor="experience-level">Experience Level</label>
+
+            <input type="radio" name="experience-level" value="Beginner" />
+            <label htmlFor="Beginner">Beginner</label>
+
+            <input type="radio" name="experience-level" value="Intermediate" />
+            <label htmlFor="Intermediate">Intermediate</label>
             
-            {/* Profile Picture Input */}
-            <Form.Group>
-              <Form.Label>Profile Picture</Form.Label>
-              <Form.Control type="file" onChange={e => setProfilePic(URL.createObjectURL((e.target as HTMLInputElement).files[0]))} />
-            </Form.Group>
+            <input type="radio" name="experience-level" value="Advanced" />
+            <label htmlFor="Advanced">Advanced</label>
 
-            {/* Days Available */}
-            <Form.Group>
-              <Form.Label>Days Available</Form.Label>
-              {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-                <Form.Check 
-                  type="checkbox"
-                  label={day}
-                  onChange={() => {
-                    if (daysAvailable.includes(day)) {
-                      setDaysAvailable(prev => prev.filter(d => d !== day));
-                    } else {
-                      setDaysAvailable(prev => [...prev, day]);
-                    }
-                  }}
-                />
-              ))}
-            </Form.Group>
-
-            {/* Times Available */}
-            <Form.Group>
-              <Form.Label>Times Available</Form.Label>
-              {daysAvailable.map(day => (
-                <div key={day}>
-                  <Form.Label>{day}</Form.Label>
-                  <Form.Control type="time" onChange={e => setTimesAvailable(prev => ({ ...prev, [day]: { ...prev[day], start: e.target.value } }))} />
-                  <Form.Control type="time" onChange={e => setTimesAvailable(prev => ({ ...prev, [day]: { ...prev[day], end: e.target.value } }))} />
-                </div>
-              ))}
-            </Form.Group>
-
-            {/* Experience Level */}
-            <Form.Group>
-              <Form.Label>Experience Level</Form.Label>
-              {['beginner', 'intermediate', 'advanced'].map(level => (
-                <Form.Check 
-                  type="radio"
-                  name="experienceLevel"
-                  label={level.charAt(0).toUpperCase() + level.slice(1)}
-                  onChange={() => setExperienceLevel(level)}
-                />
-              ))}
-            </Form.Group>
-
-            <Button
-              type="submit"
-              href="/dashboard"
-            >
-              Save
-            </Button>
-          </Form>
-        </div>
-      </div>
-    </div>
-  );
+            <button type="submit">Save</button>
+        </form>
+    )
 }
-
-export default CreateProfile;
