@@ -7,8 +7,17 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url)
 
   const formData = await request.formData()
+  const profilePicture = formData.get('pfp')
 
-  const profilePicture = String(formData.get('profile-picture'))
+
+//user picks photo
+//sends to us
+//we take image
+//upload photo to storebase
+//request url from storebase
+//use url//photo_id from storebase in database table
+
+
   
   const mondayAvailable = Boolean(formData.get('monday-available'))
   const tuesdayAvailable = Boolean(formData.get('tuesday-available'))
@@ -36,10 +45,18 @@ export async function POST(request: Request) {
 
   console.log("Fetched User ID: " + userId);
 
+  await supabase.storage.from('pfps').upload(userId, profilePicture)
+
+  const { data: {signedUrl}, error } = await supabase.storage.from('pfps').createSignedUrl(userId, 3600)
+  if (error) {
+      console.error(error)
+      throw new Error('Failed to generate signed URL')
+    }
+    
+  console.log(signedUrl)
 
   await supabase.from('profiles').update({
-    profile_picture_url: profilePicture,
-
+    profile_picture_url: signedUrl,
     monday_available: mondayAvailable,
     tuesday_available: tuesdayAvailable,
     wednesday_available: wednesdayAvailable,
