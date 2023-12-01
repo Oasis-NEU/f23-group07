@@ -29,8 +29,8 @@ export async function POST(request: Request) {
   const { data: { user } } = await supabase.auth.getUser()
 
   console.log("Fetched User: " + user);
-  //const userId = user.id;
-  const userId = "ddfe36b3-587c-40c0-9924-5d654a39f3a4";
+  const userId = user.id;
+  //const userId = "ddfe36b3-587c-40c0-9924-5d654a39f3a4";
 
   /////////////////////////////////////////////////////////////////
 
