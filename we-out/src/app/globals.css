@@ -12,6 +12,7 @@
 
 body {
   background-color: #C8102E;
+  font-family: "Helvetica", sans-serif;
 }
 
 .welcome {
@@ -225,4 +226,60 @@ body,
   .col-7 {
     width: 54.33%;
   }
+
+  .login-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px; 
+    height: 380px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    color: white;
+    border: 1px solid white;
+  }
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    font-family: "Helvetica", sans-serif;
+    font-weight: 600;
+    line-height: 1.6;
+    color: white;
+  }
+  
+  label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  input {
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    font-size: 1.2em;
+    padding: 10px;
+    background-color: #A4804A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
 }
