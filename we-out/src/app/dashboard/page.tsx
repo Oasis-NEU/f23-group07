@@ -1,44 +1,54 @@
 'use client';
 import marino from '../../assets/marino.jpg'
+import adam from '../../assets/adam.png'
+import win from '../../assets/win.png'
 
 
 function Dashboard() {
 
   const data = [
     {
-      "firstName": "John",
-      "lastName": "Doe",
-      "profilePicture": marino.src,
+      "firstName": "Win",
+      "lastName": "Tongtawee",
+      "profilePicture": win.src,
 
-      "mondayAvailable": true,
-      "tuesdayAvailable": false,
+      "mondayAvailable": false,
+      "tuesdayAvailable": true,
       "wednesdayAvailable": true,
-      "thursdayAvailable": false,
+      "thursdayAvailable": true,
       "fridayAvailable": true,
       "saturdayAvailable": false,
-      "sundayAvailable": true,
+      "sundayAvailable": false,
 
-      "experienceLevel": "Beginner"
-    },
-    {
-      "firstName": "Jane",
-      "lastName": "Doe",
-      "profilePicture": marino.src,
-
-      "mondayAvailable": true,
-      "tuesdayAvailable": false,
-      "wednesdayAvailable": true,
-      "thursdayAvailable": false,
-      "fridayAvailable": true,
-      "saturdayAvailable": false,
-      "sundayAvailable": true,
+      "morningAvailable": true,
+      "afternoonAvailable": true,
+      "eveningAvailable": true,
 
       "experienceLevel": "Intermediate"
     },
     {
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "profilePicture": "",
+      "firstName": "Adam",
+      "lastName": "Ma",
+      "profilePicture": adam.src,
+
+      "mondayAvailable": false,
+      "tuesdayAvailable": true,
+      "wednesdayAvailable": true,
+      "thursdayAvailable": true,
+      "fridayAvailable": true,
+      "saturdayAvailable": false,
+      "sundayAvailable": false,
+
+      "morningAvailable": true,
+      "afternoonAvailable": false,
+      "eveningAvailable": false,
+
+      "experienceLevel": "Intermediate"
+    },
+    {
+      "firstName": "Will",
+      "lastName": "Silver",
+      "profilePicture": marino.src,
 
       "mondayAvailable": true,
       "tuesdayAvailable": false,
@@ -47,6 +57,29 @@ function Dashboard() {
       "fridayAvailable": true,
       "saturdayAvailable": false,
       "sundayAvailable": true,
+
+      "morningAvailable": true,
+      "afternoonAvailable": true,
+      "eveningAvailable": true,
+
+      "experienceLevel": "Intermediate"
+    },
+    {
+      "firstName": "Kevin",
+      "lastName": "Ma",
+      "profilePicture": marino.src,
+
+      "mondayAvailable": true,
+      "tuesdayAvailable": false,
+      "wednesdayAvailable": true,
+      "thursdayAvailable": false,
+      "fridayAvailable": true,
+      "saturdayAvailable": false,
+      "sundayAvailable": true,
+
+      "morningAvailable": true,
+      "afternoonAvailable": true,
+      "eveningAvailable": true,
 
       "experienceLevel": "Advanced"
     }
@@ -98,24 +131,46 @@ function Dashboard() {
     return daysAvailable;
   }
 
+  function getTimesAvailable(
+    morningAvailable: boolean,
+    afternoonAvailable: boolean,
+    eveningAvailable: boolean
+  ) {
+    const timesAvailable = [];
+
+    if (morningAvailable) {
+      timesAvailable.push("Morning");
+    }
+
+    if (afternoonAvailable) {
+      timesAvailable.push("Afternoon");
+    }
+
+    if (eveningAvailable) {
+      timesAvailable.push("Evening");
+    }
+
+    return timesAvailable;
+  }
+
   return (
     <div style={{ position: 'relative' }}>
       <div style={{ position: 'absolute', top: 0, right: 0 }}>
-        <button onClick={() => alert('Edit profile')}>Edit Profile</button>
-        <button onClick={() => alert('Log out')}>Log Out</button>
+        <button className='mr-2 mt-2 mb-2' onClick={() => alert('Edit profile')}>Edit Profile</button>
+        <button className='mr-2 mt-2 mb-2' onClick={() => alert('Log out')}>Log Out</button>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         {data.map((item, index) => (
-          <div key={index} style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
+          <div key={index} style={{ border: '1px solid black', backgroundColor: 'black', margin: '10px', padding: '10px' }}>
             
             {/* Profile Picture */}
-            <img src={item.profilePicture} alt='Profile Picture' width="500"/>
+            <img src={item.profilePicture} className="ml-2 mr-2 mt-2 mb-2" alt='Profile Picture' width="500"/>
 
             {/* First and Last Name */}
-            <p>{item.firstName + " " + item.lastName}</p>
+            <h1 className="text-3xl ml-2 mb-2" >{item.firstName + " " + item.lastName}</h1>
 
             {/* Days Available */}
-            <p>{"Days Available: " + getDaysAvailable(
+            <p className="ml-2 mb-2" >{"Days Available: " + getDaysAvailable(
               item.mondayAvailable,
               item.tuesdayAvailable,
               item.wednesdayAvailable,
@@ -125,12 +180,19 @@ function Dashboard() {
               item.sundayAvailable
             ).join(", ")}</p>
 
+            {/* Times Available */}
+            <p className="ml-2 mb-2" >{"Times Available: " + getTimesAvailable(
+              item.morningAvailable,
+              item.afternoonAvailable,
+              item.eveningAvailable
+            ).join(", ")}</p>
+
             {/* Experience Level */}
-            <p>{"Experience Level: " + item.experienceLevel}</p>
+            <p className="ml-2 mb-2" >{"Experience Level: " + item.experienceLevel}</p>
 
             {/* Like and Reject Buttons */}
-            <button onClick={() => alert('Liked')}>Like</button>
-            <button onClick={() => alert('Rejected')}>Reject</button>
+            <button className="ml-2 mr-2 mt-2 mb-2" onClick={() => alert('Liked')}>Like</button>
+            <button className="ml-2 mr-2 mt-2 mb-2" onClick={() => alert('Rejected')}>Reject</button>
           </div>
         ))}
       </div>
