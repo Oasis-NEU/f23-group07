@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     experience_level: experienceLevel,
   }).eq('id', userId);
 
-  return NextResponse.redirect(requestUrl.origin, {
+  return NextResponse.redirect(new URL('/dashboard', request.url), {
     status: 301,
   })
 }
