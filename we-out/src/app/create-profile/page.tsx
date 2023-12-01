@@ -3,7 +3,7 @@ export default function CreateProfile() {
         <form action="/create-profile/api" method="post">
 
             <label htmlFor="profile-picture">Profile Picture</label>
-            <input type="file" name="profile-picture" />
+            <input type="file" name="pfp" />
 
 
             <label >Days Available</label>

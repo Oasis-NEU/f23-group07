@@ -1,8 +1,11 @@
 //import { GET } from './api/get/route'
-    
+import useSWR from 'swr';
+
 export default function CustomizeProfile() {
 
     //TODO: Fetch existing data from database
+    
+    const { data, error } = useSWR('/api/user', fetch); //in theory this works, but maybe needs a fetcher method...
 
     //const data = GET(new Request("/api/get", { method: 'GET' }));
 
