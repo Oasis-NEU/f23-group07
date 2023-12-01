@@ -1,20 +1,60 @@
-'use client'
+'use client';
 
 export default function Home() {
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+    background: '#f3f3f3'
+  };
+
+  const boxStyle = {
+    width: '300px',
+    padding: '20px',
+    border: '1px solid #ddd',
+    borderRadius: '5px',
+    background: '#fff',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+  };
+
+  const inputStyle = {
+    width: '100%',
+    padding: '10px',
+    margin: '10px 0',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    color: 'black'
+  };
+
+  const buttonStyle = {
+    width: '100%',
+    padding: '10px',
+    border: 'none',
+    borderRadius: '4px',
+    background: '#007bff',
+    color: 'white',
+    cursor: 'pointer',
+    marginTop: '10px'
+  };
+
   return (
-    <div className = "login-box-container">
-      <h1 className="absolute top-1/4 text-center text-6xl text-red-with-border">
-          NUGym<span className="text-white">.</span>
-        </h1>   
-      <div className="login-box">
+    <div style={containerStyle}>
+      <h1 style={{ textAlign: 'center', color: 'red', fontSize: '3rem', marginBottom: '20px' }}>
+        NUGym<span style={{ color: 'white' }}>.</span>
+      </h1>
+      <div style={boxStyle}>
         <form action="/auth/sign-up" method="post">
           <label htmlFor="email">Email</label>
-          <input name="email" />
+          <input style={inputStyle} name="email" />
+
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
-          <button>Sign Up</button>
+          <input style={inputStyle} type="password" name="password" />
+
+          <button style={buttonStyle}>Sign Up</button>
         </form>
-    </div>
+      </div>
     </div>
   )
 }

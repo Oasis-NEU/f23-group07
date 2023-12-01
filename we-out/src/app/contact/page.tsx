@@ -12,7 +12,7 @@ export default function LearnMore() {
       }}
     >
       <h1
-        className="absolute top-1/4 text-center text-6xl text-red-with-border">
+        className="absolute top-1/4 text-center text-6xl text-red-with-border" style = {{color: 'red'}}> 
         Contact NUgym
       </h1>
       <div>

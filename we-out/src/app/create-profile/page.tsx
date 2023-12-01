@@ -1,81 +1,75 @@
 export default function CreateProfile() {
-    return (
-        <form action="/create-profile/api" method="post">
+  const formStyle = {
+      maxWidth: '500px',
+      margin: '0 auto',
+      padding: '20px',
+      background: '#f5f5f5',
+      borderRadius: '8px'
+  };
 
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-9 mt-8" style={{color: 'black'}} htmlFor="profile-picture">Profile Picture</label>
-                <input className="ml-8" type="file" name="profile-picture" />
-            </div>
+  const labelStyle = {
+      display: 'block',
+      marginBottom: '5px',
+      color: 'black',
+      fontWeight: 'bold'
+  };
+
+  const inputStyle = {
+      marginBottom: '10px',
+      width: '100%',
+      padding: '8px',
+      border: '1px solid #ddd',
+      borderRadius: '4px',
+      color: 'black'
+  };
+
+  const buttonStyle = {
+      backgroundColor: 'green',
+      color: 'white',
+      border: '2px solid green',
+      padding: '10px 20px',
+      borderRadius: '5px',
+      outline: 'none',
+      cursor: 'pointer',
+      width: '100%',
+      fontSize: '16px'
+  };
+
+  return (
+      <form action="/create-profile/api" method="post" style={formStyle}>
+
+          <div style={{ marginBottom: '20px' }}>
+              <label style={{ ...labelStyle, color: "red" }} htmlFor="profile-picture">Profile Picture</label>
+              <input style={inputStyle} type="file" name="profile-picture" />
+          </div>
+
+          <label style={{ ...labelStyle, color: "red" }}>Days Available</label>
+
+          {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
+              <div key={day} style={{ marginBottom: '10px' }}>
+                  <label style={labelStyle} htmlFor={`${day.toLowerCase()}-available`}>{day}</label>
+                  <input type="checkbox" name={`${day.toLowerCase()}-available`} />
+              </div>
+          ))}
+
+          <label style={{ ...labelStyle, color: "red" }} htmlFor="experience-level">Experience Level</label>
+          <div style={{ marginBottom: '10px' }}>
+              <label style={labelStyle} htmlFor="Beginner">Beginner</label>
+              <input type="radio" name="experience-level" value="Beginner" />
+          </div>
+
+          <div style={{ marginBottom: '10px' }}>
+              <label style={labelStyle} htmlFor="Intermediate">Intermediate</label>
+              <input type="radio" name="experience-level" value="Intermediate" />
+          </div>
+
+          <div style={{ marginBottom: '10px' }}>
+              <label style={labelStyle} htmlFor="Advanced">Advanced</label>
+              <input type="radio" name="experience-level" value="Advanced" />
+          </div>
 
 
-            <label className="ml-9 mt-8" style={{color: 'black'}} >Days Available</label>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{ color: 'black'}} htmlFor="monday-available">Monday</label>
-                <input type="checkbox" name="monday-available" />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="tuesday-available">Tuesday</label>
-                <input type="checkbox" name="tuesday-available" />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="wednesday-available">Wednesday</label>
-                <input type="checkbox" name="wednesday-available" />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="thursday-available">Thursday</label>
-                <input type="checkbox" name="thursday-available" />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="friday-available">Friday</label>
-                <input type="checkbox" name="friday-available" />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="saturday-available">Saturday</label>
-                <input type="checkbox" name="saturday-available" />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="sunday-available">Sunday</label>
-                <input type="checkbox" name="sunday-available" />
-            </div>
-
-
-            <label className="ml-9 mt-8" style={{color: 'black'}} htmlFor="experience-level">Experience Level</label>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="Beginner">Beginner</label>
-                <input type="radio" name="experience-level" value="Beginner" />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="Intermediate">Intermediate</label>
-                <input type="radio" name="experience-level" value="Intermediate" />
-            </div>
-            
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <label className="ml-12 mt-2" style={{color: 'black'}} htmlFor="Advanced">Advanced</label>
-                <input type="radio" name="experience-level" value="Advanced" />
-            </div>
-
-            <button
-                style={{
-                    backgroundColor: 'green', // Background color
-                    color: 'white',             // Text color
-                    border: '2px solid green', // Border
-                    padding: '10px 20px',       // Padding
-                    borderRadius: '5px',        // Rounded corners
-                    outline: 'none',            // Removes the default focus outline
-                    cursor: 'pointer'           // Changes the cursor on hover
-                }}
-                className="ml-12 mt-8"
-                type="submit"
-            >Save</button>
-        </form>
-    )
+          <button style={buttonStyle} type="submit">Save</button>
+      </form>
+  )
 }

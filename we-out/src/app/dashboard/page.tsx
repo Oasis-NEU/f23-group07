@@ -2,6 +2,8 @@
 import marino from '../../assets/marino.jpg'
 import adam from '../../assets/adam.png'
 import win from '../../assets/win.png'
+import will from '../../assets/will.jpeg'
+import kevin from '../../assets/kevin.jpeg'
 
 
 function Dashboard() {
@@ -48,7 +50,7 @@ function Dashboard() {
     {
       "firstName": "Will",
       "lastName": "Silver",
-      "profilePicture": marino.src,
+      "profilePicture": will.src,
 
       "mondayAvailable": true,
       "tuesdayAvailable": false,
@@ -67,7 +69,7 @@ function Dashboard() {
     {
       "firstName": "Kevin",
       "lastName": "Ma",
-      "profilePicture": marino.src,
+      "profilePicture": kevin.src,
 
       "mondayAvailable": true,
       "tuesdayAvailable": false,
