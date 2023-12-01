@@ -1,102 +1,69 @@
-"use client";
-
-import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { setDoc, getDocs, doc, collection, getFirestore } from "firebase/firestore";
-import { auth } from "../firebase";
-
-//TODO: Change layout to be for a profile that has already been created
-function CustomizeProfile() {
-  const [profilePic, setProfilePic] = useState<string>("");
-  const [daysAvailable, setDaysAvailable] = useState<string[]>([]);
-  const [timesAvailable, setTimesAvailable] = useState<{ [key: string]: { start: string, end: string } }>({});
-  const [experienceLevel, setExperienceLevel] = useState<string>("");
-
-  const user = auth.currentUser;
-
-  const handleCustomization = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+//import { GET } from './api/get/route'
     
-    const db = getFirestore();
+export default function CustomizeProfile() {
 
-    const id = user.uid;
+    //TODO: Fetch existing data from database
 
-    const userRef = doc(collection(db, "users"), id);
-    setDoc(userRef, {
-      profilePic: profilePic,
-      daysAvailable: daysAvailable,
-      timesAvailable: timesAvailable,
-      experienceLevel: experienceLevel
-    });
-  };
+    //const data = GET(new Request("/api/get", { method: 'GET' }));
 
-  return (
-    <div style={{ display: "flex", justifyContent: "space-between", height: "92vh" }}>
-      <div className="Container">
-        <div className="pt-14 px-8">
-          <header className="Header font-sans font-bold">Profile Customization</header>
-          <Form onSubmit={handleCustomization}>
+    const profilePictureDB = "TEST.png";
+
+    const mondayAvailableDB = true;
+    const tuesdayAvailableDB = false;
+    const wednesdayAvailableDB = true;
+    const thursdayAvailableDB = false;
+    const fridayAvailableDB = true;
+    const saturdayAvailableDB = false;
+    const sundayAvailableDB = true;
+
+    const experienceLevelDB = "Beginner";
+    
+    const beginnerLevelDB = experienceLevelDB === "Beginner";
+    const intermediateLevelDB = false;
+    const advancedLevelDB = false;
+
+    return (
+        <form action="/customize-profile/api/post" method="post">
+            <label htmlFor="profile-picture">Profile Picture</label>
+            <input type="file" name="profile-picture" value={profilePictureDB}/>
+
+
+            <label >Days Available</label>
+
+            <label htmlFor="monday-available">Monday</label>
+            <input type="checkbox" name="monday-available" checked={mondayAvailableDB}/>
+
+            <label htmlFor="tuesday-available">Tuesday</label>
+            <input type="checkbox" name="tuesday-available" checked={tuesdayAvailableDB}/>
+
+            <label htmlFor="wednesday-available">Wednesday</label>
+            <input type="checkbox" name="wednesday-available" checked={wednesdayAvailableDB}/>
+
+            <label htmlFor="thursday-available">Thursday</label>
+            <input type="checkbox" name="thursday-available" checked={thursdayAvailableDB}/>
+
+            <label htmlFor="friday-available">Friday</label>
+            <input type="checkbox" name="friday-available" checked={fridayAvailableDB}/>
+
+            <label htmlFor="saturday-available">Saturday</label>
+            <input type="checkbox" name="saturday-available" checked={saturdayAvailableDB}/>
+
+            <label htmlFor="sunday-available">Sunday</label>
+            <input type="checkbox" name="sunday-available" checked={sundayAvailableDB}/>
+
+
+            <label htmlFor="experience-level">Experience Level</label>
+
+            <input type="radio" name="experience-level" value="Beginner" checked={beginnerLevelDB}/>
+            <label htmlFor="Beginner">Beginner</label>
+
+            <input type="radio" name="experience-level" value="Intermediate" checked={intermediateLevelDB}/>
+            <label htmlFor="Intermediate">Intermediate</label>
             
-            {/* Profile Picture Input */}
-            <Form.Group>
-              <Form.Label>Profile Picture</Form.Label>
-              <Form.Control type="file" onChange={e => setProfilePic(URL.createObjectURL((e.target as HTMLInputElement).files[0]))} />
-            </Form.Group>
+            <input type="radio" name="experience-level" value="Advanced" checked={advancedLevelDB}/>
+            <label htmlFor="Advanced">Advanced</label>
 
-            {/* Days Available */}
-            <Form.Group>
-              <Form.Label>Days Available</Form.Label>
-              {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-                <Form.Check 
-                  type="checkbox"
-                  label={day}
-                  onChange={() => {
-                    if (daysAvailable.includes(day)) {
-                      setDaysAvailable(prev => prev.filter(d => d !== day));
-                    } else {
-                      setDaysAvailable(prev => [...prev, day]);
-                    }
-                  }}
-                />
-              ))}
-            </Form.Group>
-
-            {/* Times Available */}
-            <Form.Group>
-              <Form.Label>Times Available</Form.Label>
-              {daysAvailable.map(day => (
-                <div key={day}>
-                  <Form.Label>{day}</Form.Label>
-                  <Form.Control type="time" onChange={e => setTimesAvailable(prev => ({ ...prev, [day]: { ...prev[day], start: e.target.value } }))} />
-                  <Form.Control type="time" onChange={e => setTimesAvailable(prev => ({ ...prev, [day]: { ...prev[day], end: e.target.value } }))} />
-                </div>
-              ))}
-            </Form.Group>
-
-            {/* Experience Level */}
-            <Form.Group>
-              <Form.Label>Experience Level</Form.Label>
-              {['beginner', 'intermediate', 'advanced'].map(level => (
-                <Form.Check 
-                  type="radio"
-                  name="experienceLevel"
-                  label={level.charAt(0).toUpperCase() + level.slice(1)}
-                  onChange={() => setExperienceLevel(level)}
-                />
-              ))}
-            </Form.Group>
-
-            <Button
-              type="submit"
-              href="/dashboard"
-            >
-              Save
-            </Button>
-          </Form>
-        </div>
-      </div>
-    </div>
-  );
+            <button type="submit">Save</button>
+        </form>
+    )
 }
-
-export default CustomizeProfile;
