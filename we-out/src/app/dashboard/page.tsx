@@ -3,7 +3,6 @@ import marino from '../../assets/marino.jpg'
 import adam from '../../assets/adam.png'
 import win from '../../assets/win.png'
 import will from '../../assets/will.jpeg'
-import kevin from '../../assets/kevin.jpeg'
 
 
 function Dashboard() {
@@ -69,7 +68,7 @@ function Dashboard() {
     {
       "firstName": "Kevin",
       "lastName": "Ma",
-      "profilePicture": kevin.src,
+      "profilePicture": marino.src,
 
       "mondayAvailable": true,
       "tuesdayAvailable": false,
