@@ -17,20 +17,10 @@ body {
 
 .welcome {
   background-color: rgba(134, 15, 33, 0.5); /* Red with 50% transparency */
-  background-image: url(../assets/marino.jpg);
+  background-image: url(../assets/marino-filter.jpg);
   background-size: cover; /* Cover the entire page */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-attachment: fixed;
-}
-
-.welcome::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(134, 15, 33, 0.5); /* Red color with 50% opacity */
 }
 
 .font-style {

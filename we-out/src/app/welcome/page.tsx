@@ -5,8 +5,9 @@ import LearnMore from './learn-more';
 export default function Welcome() {
 
   return (
+    <div>
     <div className = "welcome">
-      <div className="relative left-20 flex items-center justify-left h-screen bg-cover bg-no-repeat bg-center pl-20 z-10">
+      <div className="relative left-20 flex items-center justify-left h-screen bg-center pl-20 z-10">
         <h1 className="absolute top-1/4 text-center text-6xl text-red-with-border">
           NUGym<span className="text-white">.</span>
         </h1>   
@@ -17,8 +18,10 @@ export default function Welcome() {
           </Link>
         </div>
       </div>
-      <LearnMore>
-      </LearnMore>
     </div>
+    <div>
+    <LearnMore />
+    </div>
+    </div> 
   );
 }
