@@ -2,6 +2,7 @@
 import marino from '../../assets/marino.jpg'
 import adam from '../../assets/adam.png'
 import win from '../../assets/win.png'
+import will from '../../assets/will.jpeg'
 
 
 function Dashboard() {
@@ -48,7 +49,7 @@ function Dashboard() {
     {
       "firstName": "Will",
       "lastName": "Silver",
-      "profilePicture": marino.src,
+      "profilePicture": will.src,
 
       "mondayAvailable": true,
       "tuesdayAvailable": false,
