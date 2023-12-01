@@ -70,10 +70,18 @@ body {
 }
 
 .text-box {
-  padding: 5px;
-  border-radius: 1px;
-  border-radius: 5px;
-  max-width: 610px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 650px;
+  color: white;
+  border: 1px solid white;
+  margin-top: 150px;
+}
+
+.text-box-font-style {
+  font-weight: 600;
+  line-height: 1.6;
 }
 
 .centered-right-align {
