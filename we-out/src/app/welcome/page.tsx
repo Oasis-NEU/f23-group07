@@ -15,13 +15,10 @@ export default function Welcome() {
             href="/login">
             Login
           </Link>
-
-          <Link className="font-bold block w-full rounded border border-white bg-black px-12 py-3 text-sm text-white hover:border-opacity-50 hover:bg-opacity-75 hover:text-gray-500 focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
-            href="/learn-more">
-            Learn More
-          </Link>
         </div>
       </div>
+      <LearnMore>
+      </LearnMore>
     </div>
   );
 }
