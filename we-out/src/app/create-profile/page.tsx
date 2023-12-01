@@ -2,8 +2,10 @@ export default function CreateProfile() {
     return (
         <form action="/create-profile/api" method="post">
 
-            <label className="ml-9 mt-8" style={{color: 'black'}} htmlFor="profile-picture">Profile Picture</label>
-            <input className="ml-8" style={{width: '50%'}} type="file" name="profile-picture" />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <label className="ml-9 mt-8" style={{color: 'black'}} htmlFor="profile-picture">Profile Picture</label>
+                <input className="ml-8" type="file" name="profile-picture" />
+            </div>
 
 
             <label className="ml-9 mt-8" style={{color: 'black'}} >Days Available</label>
@@ -61,7 +63,19 @@ export default function CreateProfile() {
                 <input type="radio" name="experience-level" value="Advanced" />
             </div>
 
-            <button style={{backgroundColor: 'black'}} className="ml-12 mt-8" type="submit">Save</button>
+            <button
+                style={{
+                    backgroundColor: 'green', // Background color
+                    color: 'white',             // Text color
+                    border: '2px solid green', // Border
+                    padding: '10px 20px',       // Padding
+                    borderRadius: '5px',        // Rounded corners
+                    outline: 'none',            // Removes the default focus outline
+                    cursor: 'pointer'           // Changes the cursor on hover
+                }}
+                className="ml-12 mt-8"
+                type="submit"
+            >Save</button>
         </form>
     )
 }

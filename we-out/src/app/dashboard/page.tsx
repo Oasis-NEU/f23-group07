@@ -156,15 +156,39 @@ function Dashboard() {
   return (
     <div style={{ position: 'relative' }}>
       <div style={{ position: 'absolute', top: 0, right: 0 }}>
-        <button className='mr-2 mt-2 mb-2' onClick={() => alert('Edit profile')}>Edit Profile</button>
-        <button className='mr-2 mt-2 mb-2' onClick={() => alert('Log out')}>Log Out</button>
+        <button
+          className='mr-2 mt-2 mb-2'
+          style={{
+            backgroundColor: 'orange', // Background color
+            color: 'white',             // Text color
+            border: '2px solid orange', // Border
+            padding: '10px 20px',       // Padding
+            borderRadius: '5px',        // Rounded corners
+            outline: 'none',            // Removes the default focus outline
+            cursor: 'pointer'           // Changes the cursor on hover
+          }}
+          onClick={() => alert('Edit profile')}
+        >Edit Profile</button>
+        <button
+          className='mr-2 mt-2 mb-2'
+          style={{
+            backgroundColor: 'gray', // Background color
+            color: 'white',             // Text color
+            border: '2px solid gray', // Border
+            padding: '10px 20px',       // Padding
+            borderRadius: '5px',        // Rounded corners
+            outline: 'none',            // Removes the default focus outline
+            cursor: 'pointer'           // Changes the cursor on hover
+          }}
+          onClick={() => alert('Log out')}
+        >Log Out</button>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         {data.map((item, index) => (
-          <div key={index} style={{ border: '1px solid black', backgroundColor: 'black', margin: '10px', padding: '10px' }}>
+          <div key={index} style={{ border: '1px solid black', backgroundColor: '#FFDAB9', margin: '10px', padding: '10px' }}>
             
             {/* Profile Picture */}
-            <img src={item.profilePicture} className="ml-2 mr-2 mt-2 mb-2" alt='Profile Picture' width="500"/>
+            <img src={item.profilePicture} className="ml-2 mr-2 mt-2 mb-2" style={{border: '1px solid black'}} alt='Profile Picture' width="500"/>
 
             {/* First and Last Name */}
             <h1 className="text-3xl ml-2 mb-2" >{item.firstName + " " + item.lastName}</h1>
@@ -191,8 +215,32 @@ function Dashboard() {
             <p className="ml-2 mb-2" >{"Experience Level: " + item.experienceLevel}</p>
 
             {/* Like and Reject Buttons */}
-            <button className="ml-2 mr-2 mt-2 mb-2" onClick={() => alert('Liked')}>Like</button>
-            <button className="ml-2 mr-2 mt-2 mb-2" onClick={() => alert('Rejected')}>Reject</button>
+            <button
+              className="ml-2 mr-2 mt-2 mb-2"
+              style={{
+                  backgroundColor: 'green', // Background color
+                  color: 'white',             // Text color
+                  border: '2px solid green', // Border
+                  padding: '10px 20px',       // Padding
+                  borderRadius: '5px',        // Rounded corners
+                  outline: 'none',            // Removes the default focus outline
+                  cursor: 'pointer'           // Changes the cursor on hover
+              }}
+              onClick={() => alert('Liked')}
+            >Like</button>
+            <button
+              className="ml-2 mr-2 mt-2 mb-2"
+              style={{
+                backgroundColor: 'red', // Background color
+                color: 'white',             // Text color
+                border: '2px solid red', // Border
+                padding: '10px 20px',       // Padding
+                borderRadius: '5px',        // Rounded corners
+                outline: 'none',            // Removes the default focus outline
+                cursor: 'pointer'           // Changes the cursor on hover
+              }}
+              onClick={() => alert('Rejected')}
+            >Reject</button>
           </div>
         ))}
       </div>
