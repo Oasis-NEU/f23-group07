@@ -44,23 +44,13 @@ export default function LearnMore() {
 
       {/* Card 3: Messaging System */}
       <a
-        className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-red-500/10 hover:shadow-red-500/10"
-        href="/services/messaging-system"
-      >
+        className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-red-500/10 hover:shadow-red-500/10">
         {/* SVG for Messaging System */}
         <img src={messageSVG.src} alt="Messaging SVG" className="h-10 w-10" style={{maxHeight: 100}}/>
         <h2 className="mt-4 text-xl font-bold text-white">Messaging System</h2>
         <p className="mt-1 text-sm text-gray-300">
           Communicate with gym buddies through a built-in messaging system, making it easy to plan workouts and coordinate schedules.
         </p>
-      </a>
-    </div>
-
-    <div className="mt-12 text-center">
-      <a
-        href="/login"
-        className="inline-block rounded bg-red-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-red-700 focus:outline-none focus:ring focus:ring-yellow-400">
-        Show Me!
       </a>
     </div>
   </div>

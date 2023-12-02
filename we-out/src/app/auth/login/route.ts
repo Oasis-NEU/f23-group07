@@ -11,10 +11,19 @@ export async function POST(request: Request) {
   const cookieStore = cookies()
   const supabase = createRouteHandlerClient<Database>({ cookies: () => cookieStore })
 
-  await supabase.auth.signInWithPassword({
+
+  const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
-  })
+  });
+
+  if (error) {
+    // Redirect back to the login page if login fails
+    const loginPageUrl = `${requestUrl.origin}/login`; // Replace with your actual login page URL
+    return NextResponse.redirect(loginPageUrl, {
+      status: 302, // Temporary redirect
+    });
+  }
 
   return NextResponse.redirect(`${requestUrl.origin}/auth/callback/existingaccount`, {
     status: 301,
