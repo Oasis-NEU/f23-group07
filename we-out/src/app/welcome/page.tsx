@@ -22,9 +22,9 @@ export default function Welcome() {
       </div>
     </div>
     <div>
-    <LearnMore />
-    <PersonalizedProfiles />
-    <MatchmakingAlgorithm />
+      <LearnMore />
+      <PersonalizedProfiles />
+      <MatchmakingAlgorithm />
     </div>
     </div> 
   );
