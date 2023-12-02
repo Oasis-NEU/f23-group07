@@ -21,7 +21,7 @@ export default function LearnMore() {
         href="/services/personalized-profiles"
       >
         {/* SVG for Personalized Profiles */}
-        <img src={profileSVG.src} alt="My SVG" style={{maxHeight: 100}}/>
+        <img src={profileSVG.src} alt="Profile SVG" className="h-10 w-10" style={{maxHeight: 100}}/>
         <h2 className="mt-4 text-xl font-bold text-white">Personalized Profiles</h2>
         <p className="mt-1 text-sm text-gray-300">
           Create personalized profiles specifying your fitness goals, preferred workout routines, and availability.
@@ -34,7 +34,7 @@ export default function LearnMore() {
         href="/services/matchmaking-algorithm"
       >
         {/* SVG for Matchmaking Algorithm */}
-        <img src={handshakeSVG.src} alt="My SVG" style={{maxHeight: 100}}/>
+        <img src={handshakeSVG.src} alt="Matchmaking SVG" className="h-10 w-10" style={{maxHeight: 100}}/>
         <h2 className="mt-4 text-xl font-bold text-white">Matchmaking Algorithm</h2>
         <p className="mt-1 text-sm text-gray-300">
           A sophisticated algorithm suggests potential workout partners based on fitness goals, availability, and campus location.
@@ -47,7 +47,7 @@ export default function LearnMore() {
         href="/services/messaging-system"
       >
         {/* SVG for Messaging System */}
-        <img src={messageSVG.src} alt="My SVG" style={{maxHeight: 100}}/>
+        <img src={messageSVG.src} alt="Messaging SVG" className="h-10 w-10" style={{maxHeight: 100}}/>
         <h2 className="mt-4 text-xl font-bold text-white">Messaging System</h2>
         <p className="mt-1 text-sm text-gray-300">
           Communicate with gym buddies through a built-in messaging system, making it easy to plan workouts and coordinate schedules.

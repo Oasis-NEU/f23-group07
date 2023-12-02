@@ -10,8 +10,10 @@ export default function Home() {
         <form action="/auth/sign-up" method="post">
           <label htmlFor="email">Email</label>
           <input 
+          type="email"
           name="email" 
           placeholder = "example.northeastern.edu"
+          required
           className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
           />
           <label htmlFor="password">Password</label>
@@ -19,7 +21,9 @@ export default function Home() {
           <input 
           type="password" 
           name="password"
+          minLength = {6}
           placeholder = "supersecretpassword!!"
+          required
           className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
            />
           <button>Sign Up</button>
