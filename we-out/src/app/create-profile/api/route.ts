@@ -8,14 +8,6 @@ export async function POST(request: Request) {
 
   const formData = await request.formData()
   const profilePicture = String(formData.get('profile-picture'))
-
-//user picks photo
-//sends to us
-//we take image
-//upload photo to storebase
-//request url from storebase
-//use url//photo_id from storebase in database table
-
   
   const mondayAvailable = Boolean(formData.get('monday-available'))
   const tuesdayAvailable = Boolean(formData.get('tuesday-available'))
@@ -30,27 +22,12 @@ export async function POST(request: Request) {
   const cookieStore = cookies()
   const supabase = createRouteHandlerClient<Database>({ cookies: () => cookieStore })
 
-  /////////////////////////////////////////////////////////////////
-
-  //TODO: Figure out how to get the current user
   const { data: { user } } = await supabase.auth.getUser()
 
   console.log("Fetched User: " + user);
   const userId = user.id;
 
-  /////////////////////////////////////////////////////////////////
-
   console.log("Fetched User ID: " + userId);
-
-  /*
-  await supabase.storage.from('pfps').upload(userId, profilePicture)
-
-  const { data: {signedUrl}, error } = await supabase.storage.from('pfps').createSignedUrl(userId, 3600)
-  if (error) {
-      console.error(error)
-      throw new Error('Failed to generate signed URL')
-    }
-  */
 
   await supabase.from('profiles').update({
     profile_picture_url: profilePicture,
