@@ -3,6 +3,7 @@ import Link from 'next/link'
 import LearnMore from './learn-more';
 import PersonalizedProfiles from './personalized-profiles';
 import MatchmakingAlgorithm from './matchmaking-algorithm';
+import Footer from '../common/footer'
 
 export default function Welcome() {
 
@@ -29,6 +30,9 @@ export default function Welcome() {
     </div> 
     <div id = "matchmaking-algorithm">
     <MatchmakingAlgorithm/>
+    </div>
+    <div>
+      <Footer />
     </div>
     </div> 
   );
