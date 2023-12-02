@@ -86,6 +86,11 @@ export default function CustomizeProfile() {
         <form action="/customize-profile/api/post" method="post" style={formStyle}>
 
             <div style={{ marginBottom: '20px' }}>
+                <label style={{ ...labelStyle, color: "red" }} htmlFor="full-name">Full Name</label>
+                <input style={inputStyle} required type="text" name="full-name" />
+            </div>
+
+            <div style={{ marginBottom: '20px' }}>
                 <label style={{ ...labelStyle, color: "red" }} htmlFor="profile-picture">Profile Picture</label>
                 <input style={inputStyle} required type="file" name="profile-picture" />
             </div>

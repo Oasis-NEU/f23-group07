@@ -7,6 +7,9 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url)
 
   const formData = await request.formData()
+
+  const fullName = String(formData.get('full-name'))
+
   const profilePicture = String(formData.get('profile-picture'))
   
   const mondayAvailable = Boolean(formData.get('monday-available'))
@@ -30,7 +33,10 @@ export async function POST(request: Request) {
   console.log("Fetched User ID: " + userId);
 
   await supabase.from('profiles').update({
+    full_name: fullName,
+  
     profile_picture_url: profilePicture,
+    
     monday_available: mondayAvailable,
     tuesday_available: tuesdayAvailable,
     wednesday_available: wednesdayAvailable,
@@ -42,7 +48,7 @@ export async function POST(request: Request) {
     experience_level: experienceLevel,
   }).eq('id', userId);
 
-  return NextResponse.redirect(new URL('/dashboard', request.url), {
+  return NextResponse.redirect(new URL(`/dashboard/?current_user=${fullName.split(' ').join('')}`, request.url), {
     status: 301,
   })
 }

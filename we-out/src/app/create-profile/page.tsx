@@ -39,6 +39,11 @@ export default function CreateProfile() {
       <form action="/create-profile/api" method="post" style={formStyle}>
 
           <div style={{ marginBottom: '20px' }}>
+              <label style={{ ...labelStyle, color: "red" }} htmlFor="full-name">Full Name</label>
+              <input style={inputStyle} required type="text" name="full-name" />
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
               <label style={{ ...labelStyle, color: "red" }} htmlFor="profile-picture">Profile Picture</label>
               <input style={inputStyle} required type="file" name="profile-picture" />
           </div>
