@@ -4,9 +4,12 @@ import adam from '../../assets/adam.png'
 import win from '../../assets/win.png'
 import will from '../../assets/will.jpeg'
 import kevin from '../../assets/kevin.jpeg'
+import { Link } from 'react-bootstrap/lib/Navbar';
 
 
 function Dashboard() {
+
+  console.log("Currently on Dashboard");
 
   const data = [
     {
@@ -87,6 +90,13 @@ function Dashboard() {
     }
   ]
 
+  function removeCard(index: number) {
+    console.log("Index: " + index)
+    console.log(data);
+    data.splice(index, 1);
+    console.log(data);
+  }
+  
   //TODO: Fetch user data from the database
 
 
@@ -169,7 +179,7 @@ function Dashboard() {
             outline: 'none',            // Removes the default focus outline
             cursor: 'pointer'           // Changes the cursor on hover
           }}
-          onClick={() => alert('Edit profile')}
+          onClick={() => console.log("Edit Profile")}
         >Edit Profile</button>
         <button
           className='mr-2 mt-2 mb-2'
@@ -182,7 +192,7 @@ function Dashboard() {
             outline: 'none',            // Removes the default focus outline
             cursor: 'pointer'           // Changes the cursor on hover
           }}
-          onClick={() => alert('Log out')}
+          onClick={() => console.log("Log Out")}
         >Log Out</button>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -228,7 +238,7 @@ function Dashboard() {
                   outline: 'none',            // Removes the default focus outline
                   cursor: 'pointer'           // Changes the cursor on hover
               }}
-              onClick={() => alert('Liked')}
+              onClick={() => console.log("Liked")}
             >Like</button>
             <button
               className="ml-2 mr-2 mt-2 mb-2"
@@ -241,7 +251,7 @@ function Dashboard() {
                 outline: 'none',            // Removes the default focus outline
                 cursor: 'pointer'           // Changes the cursor on hover
               }}
-              onClick={() => alert('Rejected')}
+              onClick={() => removeCard(index)}
             >Reject</button>
           </div>
         ))}
