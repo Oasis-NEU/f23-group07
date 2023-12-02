@@ -4,7 +4,7 @@ import adam from '../../assets/adam.png'
 import win from '../../assets/win.png'
 import will from '../../assets/will.jpeg'
 import kevin from '../../assets/kevin.jpeg'
-import { Link } from 'react-bootstrap/lib/Navbar';
+import Link from 'next/link'
 
 
 function Dashboard() {
@@ -167,34 +167,65 @@ function Dashboard() {
 
   return (
     <div style={{ position: 'relative' }}>
-      <div style={{ position: 'absolute', top: 0, right: 0 }}>
-        <button
-          className='mr-2 mt-2 mb-2'
-          style={{
-            backgroundColor: 'orange', // Background color
-            color: 'white',             // Text color
-            border: '2px solid orange', // Border
-            padding: '10px 20px',       // Padding
-            borderRadius: '5px',        // Rounded corners
-            outline: 'none',            // Removes the default focus outline
-            cursor: 'pointer'           // Changes the cursor on hover
-          }}
-          onClick={() => console.log("Edit Profile")}
-        >Edit Profile</button>
-        <button
-          className='mr-2 mt-2 mb-2'
-          style={{
-            backgroundColor: 'gray', // Background color
-            color: 'white',             // Text color
-            border: '2px solid gray', // Border
-            padding: '10px 20px',       // Padding
-            borderRadius: '5px',        // Rounded corners
-            outline: 'none',            // Removes the default focus outline
-            cursor: 'pointer'           // Changes the cursor on hover
-          }}
-          onClick={() => console.log("Log Out")}
-        >Log Out</button>
+      <div style={{ 
+          position: 'absolute', 
+          top: 0, 
+          right: 0, 
+          display: 'flex', // Flex container
+          alignItems: 'center' // Align items vertically in the center
+      }}>
+          <Link
+            className='mr-2 mt-2 mb-2'
+            style={{
+              backgroundColor: 'orange', // Background color
+              color: 'white',             // Text color
+              border: '2px solid orange', // Border
+              padding: '10px 20px',       // Padding
+              borderRadius: '5px',        // Rounded corners
+              outline: 'none',            // Removes the default focus outline
+              cursor: 'pointer',          // Changes the cursor on hover
+              textDecoration: 'none',     // Removes underline from link
+              boxSizing: 'border-box',    // Include padding and border in the total width and height
+              fontWeight: 'bold',         // Bold font
+              width: '150px',             // Absolute width
+              height: '50px',             // Absolute height
+              fontSize: '16px',           // Font size
+              fontFamily: 'Arial',        // Font family
+              lineHeight: '30px',         // Adjust line height for vertical centering
+              justifyContent: 'center',   // Center text horizontally
+              alignItems: 'center',       // Center text vertically
+              display: 'flex'             // Use flexbox for centering
+            }}
+            href='/customize-profile'
+          >Edit Profile</Link>
+          <form action="/auth/signout" method="post" style={{ margin: 0 }}>
+            <button
+              className='mr-2 mt-2 mb-2'
+              style={{
+                backgroundColor: 'gray', // To match the Link's style
+                color: 'white',             // Text color
+                border: '2px solid gray', // Border
+                padding: '10px 20px',       // Padding
+                borderRadius: '5px',        // Rounded corners
+                outline: 'none',            // Removes the default focus outline
+                cursor: 'pointer',          // Changes the cursor on hover
+                boxSizing: 'border-box',    // Include padding and border in the total width and height
+                fontWeight: 'bold',         // Bold font
+                width: '120px',             // Absolute width
+                height: '50px',             // Absolute height
+                fontSize: '16px',           // Font size
+                fontFamily: 'Arial',        // Font family
+                lineHeight: '30px',         // Adjust line height for vertical centering
+                justifyContent: 'center',   // Center text horizontally
+                alignItems: 'center',       // Center text vertically
+                display: 'flex'             // Use flexbox for centering
+              }}
+            >Log Out</button>
+          </form>
       </div>
+
+
+
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         {data.map((item, index) => (
           <div key={index} style={{ border: '1px solid black', backgroundColor: '#FFDAB9', margin: '10px', padding: '10px' }}>

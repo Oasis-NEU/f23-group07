@@ -1,7 +1,7 @@
 //import { GET } from './api/get/route'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
-
+/*
 type Repo = {
     full_name: string
     monday_available: boolean
@@ -21,6 +21,7 @@ export const getServerSideProps = (async (context) => {
   }) satisfies GetServerSideProps<{
     repo: Repo
   }>
+*/
 
 export default function CustomizeProfile() {
 
@@ -45,48 +46,77 @@ export default function CustomizeProfile() {
     const intermediateLevelDB = false;
     const advancedLevelDB = false;
 
+    const formStyle = {
+        maxWidth: '500px',
+        margin: '0 auto',
+        padding: '20px',
+        background: '#f5f5f5',
+        borderRadius: '8px'
+    };
+
+    const labelStyle = {
+        display: 'block',
+        marginBottom: '5px',
+        color: 'black',
+        fontWeight: 'bold'
+    };
+
+    const inputStyle = {
+        marginBottom: '10px',
+        width: '100%',
+        padding: '8px',
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        color: 'black'
+    };
+
+    const buttonStyle = {
+        backgroundColor: 'green',
+        color: 'white',
+        border: '2px solid green',
+        padding: '10px 20px',
+        borderRadius: '5px',
+        outline: 'none',
+        cursor: 'pointer',
+        width: '100%',
+        fontSize: '16px'
+    };
+
     return (
-        <form action="/customize-profile/api/post" method="post">
-            <label htmlFor="profile-picture">Profile Picture</label>
-            <input type="file" name="profile-picture" value={profilePictureDB}/>
+        <form action="/customize-profile/api/post" method="post" style={formStyle}>
+
+            <div style={{ marginBottom: '20px' }}>
+                <label style={{ ...labelStyle, color: "red" }} htmlFor="profile-picture">Profile Picture</label>
+                <input style={inputStyle} type="file" name="profile-picture" />
+            </div>
+
+            <label style={{ ...labelStyle, color: "red" }}>Days Available</label>
+
+            {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
+                <div key={day} style={{ marginBottom: '10px' }}>
+                    <label style={labelStyle} htmlFor={`${day.toLowerCase()}-available`}>{day}</label>
+                    <input type="checkbox" name={`${day.toLowerCase()}-available`} />
+                </div>
+            ))}
+
+            <label style={{ ...labelStyle, color: "red" }} htmlFor="experience-level">Experience Level</label>
+            <div style={{ marginBottom: '10px' }}>
+                <label style={labelStyle} htmlFor="Beginner">Beginner</label>
+                <input type="radio" name="experience-level" value="Beginner" />
+            </div>
+
+            <div style={{ marginBottom: '10px' }}>
+                <label style={labelStyle} htmlFor="Intermediate">Intermediate</label>
+                <input type="radio" name="experience-level" value="Intermediate" />
+            </div>
+
+            <div style={{ marginBottom: '10px' }}>
+                <label style={labelStyle} htmlFor="Advanced">Advanced</label>
+                <input type="radio" name="experience-level" value="Advanced" />
+            </div>
 
 
-            <label >Days Available</label>
-
-            <label htmlFor="monday-available">Monday</label>
-            <input type="checkbox" name="monday-available" checked={mondayAvailableDB}/>
-
-            <label htmlFor="tuesday-available">Tuesday</label>
-            <input type="checkbox" name="tuesday-available" checked={tuesdayAvailableDB}/>
-
-            <label htmlFor="wednesday-available">Wednesday</label>
-            <input type="checkbox" name="wednesday-available" checked={wednesdayAvailableDB}/>
-
-            <label htmlFor="thursday-available">Thursday</label>
-            <input type="checkbox" name="thursday-available" checked={thursdayAvailableDB}/>
-
-            <label htmlFor="friday-available">Friday</label>
-            <input type="checkbox" name="friday-available" checked={fridayAvailableDB}/>
-
-            <label htmlFor="saturday-available">Saturday</label>
-            <input type="checkbox" name="saturday-available" checked={saturdayAvailableDB}/>
-
-            <label htmlFor="sunday-available">Sunday</label>
-            <input type="checkbox" name="sunday-available" checked={sundayAvailableDB}/>
-
-
-            <label htmlFor="experience-level">Experience Level</label>
-
-            <input type="radio" name="experience-level" value="Beginner" checked={beginnerLevelDB}/>
-            <label htmlFor="Beginner">Beginner</label>
-
-            <input type="radio" name="experience-level" value="Intermediate" checked={intermediateLevelDB}/>
-            <label htmlFor="Intermediate">Intermediate</label>
-            
-            <input type="radio" name="experience-level" value="Advanced" checked={advancedLevelDB}/>
-            <label htmlFor="Advanced">Advanced</label>
-
-            <button type="submit">Save</button>
+            <button style={buttonStyle} type="submit">Save</button>
         </form>
     )
 }

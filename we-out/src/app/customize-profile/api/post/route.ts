@@ -7,7 +7,6 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url)
 
   const formData = await request.formData()
-
   const profilePicture = String(formData.get('profile-picture'))
   
   const mondayAvailable = Boolean(formData.get('monday-available'))
@@ -23,23 +22,15 @@ export async function POST(request: Request) {
   const cookieStore = cookies()
   const supabase = createRouteHandlerClient<Database>({ cookies: () => cookieStore })
 
-  /////////////////////////////////////////////////////////////////
-
-  //TODO: Figure out how to get the current user
   const { data: { user } } = await supabase.auth.getUser()
 
   console.log("Fetched User: " + user);
   const userId = user.id;
-  //const userId = "ddfe36b3-587c-40c0-9924-5d654a39f3a4";
-
-  /////////////////////////////////////////////////////////////////
 
   console.log("Fetched User ID: " + userId);
 
-
   await supabase.from('profiles').update({
     profile_picture_url: profilePicture,
-
     monday_available: mondayAvailable,
     tuesday_available: tuesdayAvailable,
     wednesday_available: wednesdayAvailable,
@@ -51,7 +42,7 @@ export async function POST(request: Request) {
     experience_level: experienceLevel,
   }).eq('id', userId);
 
-  return NextResponse.redirect(requestUrl.origin, {
+  return NextResponse.redirect(new URL('/dashboard', request.url), {
     status: 301,
   })
 }
