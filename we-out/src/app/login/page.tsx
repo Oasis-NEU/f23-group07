@@ -10,16 +10,20 @@ export default function Login() {
         <form action="/auth/login" method="post">
           <label htmlFor="email">Email</label>
           <input 
+          type="email"
           name="email" 
           placeholder = "example.northeastern.edu"
           className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+          required
           />
           <label htmlFor="password">Password</label>
           <input 
           type="password" 
           name="password"
+          minLength = {6}
           placeholder = "supersecretpassword!!"
           className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+          required
            />
           <button>Sign In</button>
           <div>
