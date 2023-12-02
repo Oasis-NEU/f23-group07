@@ -280,14 +280,14 @@ function Dashboard() {
             <p className="ml-2 mb-2" >{"Experience Level: " + item.experienceLevel}</p>
 
             {/* Like and Reject Buttons */}
-            <a
+            <button
               className="inline-block ml-2 mr-2 mt-2 mb-2 rounded bg-green-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-green-500"
               onClick={handleLike}
-            >Like</a>
-            <a
+            >Like</button>
+            <button
               className="inline-block ml-2 mr-2 mt-2 mb-2 rounded bg-red-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-red-500"
               onClick={() => removeCard(item)}
-            >Reject</a>
+            >Reject</button>
           </div>
         ))}
       </div>
