@@ -18,7 +18,7 @@ export default function LearnMore() {
       {/* Card 1: Personalized Profiles */}
       <a
         className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-red-500/10 hover:shadow-red-500/10"
-        href="/services/personalized-profiles"
+        href="#personalized-profiles"
       >
         {/* SVG for Personalized Profiles */}
         <img src={profileSVG.src} alt="Profile SVG" className="h-10 w-10" style={{maxHeight: 100}}/>
@@ -31,7 +31,7 @@ export default function LearnMore() {
       {/* Card 2: Matchmaking Algorithm */}
       <a
         className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-red-500/10 hover:shadow-red-500/10"
-        href="/services/matchmaking-algorithm"
+        href="#matchmaking-algorithm"
       >
         {/* SVG for Matchmaking Algorithm */}
         <img src={handshakeSVG.src} alt="Matchmaking SVG" className="h-10 w-10" style={{maxHeight: 100}}/>

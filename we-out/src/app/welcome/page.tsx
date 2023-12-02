@@ -23,8 +23,12 @@ export default function Welcome() {
     </div>
     <div>
       <LearnMore />
-      <PersonalizedProfiles />
-      <MatchmakingAlgorithm />
+    </div>
+    <div id = "personalized-profiles">
+    <PersonalizedProfiles />
+    </div> 
+    <div id = "matchmaking-algorithm">
+    <MatchmakingAlgorithm/>
     </div>
     </div> 
   );
