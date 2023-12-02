@@ -1,13 +1,33 @@
 //import { GET } from './api/get/route'
-import useSWR from 'swr';
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
+
+
+type Repo = {
+    full_name: string
+    monday_available: boolean
+    tuesday_available: boolean
+    wednesday_available: boolean
+    thursday_availableDB: boolean
+    friday_availableDB: boolean
+    saturday_availableDB: boolean
+    sunday_availableDB: boolean
+    experience_level: String
+  }
+  
+export const getServerSideProps = (async (context) => {
+    const res = await fetch('https://api.github.com/repos/vercel/next.js')
+    const repo = await res.json()
+    return { props: { repo } }
+  }) satisfies GetServerSideProps<{
+    repo: Repo
+  }>
 
 export default function CustomizeProfile() {
 
     //TODO: Fetch existing data from database
-    
-    const { data, error } = useSWR('/api/user', fetch); //in theory this works, but maybe needs a fetcher method...
 
-    //const data = GET(new Request("/api/get", { method: 'GET' }));
+
+      
 
     const profilePictureDB = "TEST.png";
 
