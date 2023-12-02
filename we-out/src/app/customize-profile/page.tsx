@@ -87,7 +87,7 @@ export default function CustomizeProfile() {
 
             <div style={{ marginBottom: '20px' }}>
                 <label style={{ ...labelStyle, color: "red" }} htmlFor="profile-picture">Profile Picture</label>
-                <input style={inputStyle} type="file" name="profile-picture" />
+                <input style={inputStyle} required type="file" name="profile-picture" />
             </div>
 
             <label style={{ ...labelStyle, color: "red" }}>Days Available</label>
@@ -102,7 +102,7 @@ export default function CustomizeProfile() {
             <label style={{ ...labelStyle, color: "red" }} htmlFor="experience-level">Experience Level</label>
             <div style={{ marginBottom: '10px' }}>
                 <label style={labelStyle} htmlFor="Beginner">Beginner</label>
-                <input type="radio" name="experience-level" value="Beginner" />
+                <input type="radio" required name="experience-level" value="Beginner" />
             </div>
 
             <div style={{ marginBottom: '10px' }}>
