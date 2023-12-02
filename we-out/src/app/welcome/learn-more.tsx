@@ -10,7 +10,8 @@ export default function LearnMore() {
       <h2 className="text-3xl font-bold sm:text-4xl">Kickstart your fitness journey with NUGym</h2>
 
       <p className="mt-4 text-gray-300">
-        Discover a dynamic web application designed for Northeastern University students, aimed at building a fitness community and helping users achieve their fitness goals.
+        Discover a dynamic web application designed for Northeastern University students,
+        aimed at building a fitness community and helping users achieve their fitness goals.
       </p>
     </div>
 
