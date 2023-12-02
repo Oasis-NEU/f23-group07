@@ -12,5 +12,17 @@ export async function GET(req: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code)
   }
 
-  return NextResponse.redirect(new URL('/dashboard', req.url)) 
+  const { data: { user } } = await supabase.auth.getUser()
+
+  const userId = user.id
+
+  const { data, error } = await supabase.from('profiles').select('full_name').eq('id', userId);
+
+  if (error) {
+    console.log(error);
+  }
+
+  const fullName = data[0].full_name
+
+  return NextResponse.redirect(new URL(`/dashboard/?current_user=${fullName.split(' ').join('')}`, req.url)) 
 }
