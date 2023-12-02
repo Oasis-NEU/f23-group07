@@ -9,11 +9,23 @@ export default function Login() {
       <div className="login-box">
         <form action="/auth/login" method="post">
           <label htmlFor="email">Email</label>
-          <input name="email" />
+          <input 
+          name="email" 
+          placeholder = "example.northeastern.edu"
+          className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+          />
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
+          <input 
+          type="password" 
+          name="password"
+          placeholder = "supersecretpassword!!"
+          className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+           />
           <button>Sign In</button>
+          <div>
           <Link href="/registration">Sign Up</Link>
+          </div>
+          
         </form>
       </div>
     </div>

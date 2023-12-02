@@ -228,7 +228,7 @@ body,
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px; 
+    width: 500px; 
     height: 380px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 15px;
@@ -238,9 +238,8 @@ body,
 
 
   form {
-    display: flex;
     flex-direction: column;
-    max-width: 300px;
+    max-width: 400px;
     font-family: "Helvetica", sans-serif;
     font-weight: 600;
     line-height: 1.6;

@@ -9,9 +9,19 @@ export default function Home() {
       <div className="login-box">
         <form action="/auth/sign-up" method="post">
           <label htmlFor="email">Email</label>
-          <input name="email" />
+          <input 
+          name="email" 
+          placeholder = "example.northeastern.edu"
+          className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+          />
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
+          <label htmlFor="password">Password</label>
+          <input 
+          type="password" 
+          name="password"
+          placeholder = "supersecretpassword!!"
+          className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+           />
           <button>Sign Up</button>
         </form>
       </div>
