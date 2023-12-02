@@ -6,13 +6,12 @@ import will from '../../assets/will.jpeg'
 import kevin from '../../assets/kevin.jpeg'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 
 
 function Dashboard() {
 
-  console.log("Currently on Dashboard");
-
-  const data = [
+  const initialData = [
     {
       "firstName": "Win",
       "lastName": "Tongtawee",
@@ -93,16 +92,18 @@ function Dashboard() {
 
   function removeSelf(fullName: string) {
     console.log("Full Name: " + fullName)
-    for (let item of data) {
+    for (let item of initialData) {
       if (item.firstName + item.lastName === fullName) {
-        data.splice(data.indexOf(item), 1);
+        initialData.splice(initialData.indexOf(item), 1);
       }
     }
   }
 
   const urlSearchParams = new URLSearchParams(useSearchParams());
   removeSelf(urlSearchParams.get('current_user'))
-  
+
+  const [data, setData] = useState(initialData);
+
   //TODO: Fetch user data from the database
 
 
@@ -174,18 +175,16 @@ function Dashboard() {
 
   const handleLike = () => {
     console.log("Like");
-    return 3;
-  }
-
-  const handleReject = () => {
-    console.log("Reject")
   }
   
-  function removeCard(index: number) {
-    console.log("Index: " + index)
-    console.log(data);
-    data.splice(index, 1);
-    console.log(data);
+  function removeCard(removeItem) {
+    const newData = [];
+    for (let item of data) {
+      if (item !== removeItem) {
+        newData.push(item);
+      }
+    }
+    setData(newData);
   }
 
   return (
@@ -287,7 +286,7 @@ function Dashboard() {
             >Like</a>
             <a
               className="inline-block ml-2 mr-2 mt-2 mb-2 rounded bg-red-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-red-500"
-              onClick={() => removeCard(index)}
+              onClick={() => removeCard(item)}
             >Reject</a>
           </div>
         ))}
