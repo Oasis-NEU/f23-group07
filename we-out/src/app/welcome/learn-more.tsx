@@ -1,9 +1,9 @@
 export default function LearnMore() {
     return (
-<section className="bg-gray-900 text-white">
+<section className="bg-gray-900 text-white" style={{ height: '60vh' }}>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
     <div className="mx-auto max-w-lg text-center">
-      <h2 className="text-3xl font-bold sm:text-4xl">Kickstart your fitness journey with FitBuddyNU</h2>
+      <h2 className="text-3xl font-bold sm:text-4xl">Kickstart your fitness journey with NUGym</h2>
 
       <p className="mt-4 text-gray-300">
         Discover a dynamic web application designed for Northeastern University students, aimed at building a fitness community and helping users achieve their fitness goals.

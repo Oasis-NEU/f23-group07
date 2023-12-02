@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
 import LearnMore from './learn-more';
+import PersonalizedProfiles from './personalized-profiles';
+import MatchmakingAlgorithm from './matchmaking-algorithm';
 
 export default function Welcome() {
 
@@ -21,6 +23,8 @@ export default function Welcome() {
     </div>
     <div>
     <LearnMore />
+    <PersonalizedProfiles />
+    <MatchmakingAlgorithm />
     </div>
     </div> 
   );
